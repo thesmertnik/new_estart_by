@@ -115,7 +115,17 @@ RewriteCond %{HTTPS} =on
 RewriteRule ^(.*)$ http://estart.by/$1 [R=301,L]
 #
 RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteEngine On
+RewriteCond %{ENV:HTTPS} !on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#
+RewriteEngine On
 RewriteCond %{HTTPS} =off
+RewriteCond %{REQUEST_URI} =/index.html
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [QSA,L]
 # Disable the pattern matching based on filenames.
 #
