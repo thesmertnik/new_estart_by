@@ -431,7 +431,7 @@ AddDefaultCharset utf-8
     RewriteRule ^ - [E=PROTO:http]
 
      # (2)
-     # RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTPS} !=on
 
     RewriteCond %{HTTP_HOST} !^www\. [NC]
     RewriteCond %{SERVER_ADDR} !=127.0.0.1
