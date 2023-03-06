@@ -115,8 +115,8 @@ RewriteCond %{HTTPS} =on
 RewriteRule ^(.*)$ http://estart.by/$1 [R=301,L]
 #
 RewriteEngine On
-RewriteCond %{SERVER_PORT} !^443$
-RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTPS} =off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [QSA,L]
 # Disable the pattern matching based on filenames.
 #
 # This setting prevents Apache from returning a 404 error as the result of a
