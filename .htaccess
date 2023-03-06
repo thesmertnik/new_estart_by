@@ -107,8 +107,20 @@ ErrorDocument 404 https://estart.by/404.shtml
 #
 # https://httpd.apache.org/docs/current/content-negotiation.html#multiviews
 
-Options -Indexes
-
+Options All -Indexes
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+          RewriteRule ^services/$    /pages/services.html [L]
+          RewriteRule ^about/$ /pages/about_us.html [L]
+          RewriteRule ^contact/$      /pages/contacts.html [L]
+          RewriteRule ^remont_generatora/$  /pages/services/repaier_alternator.html [L]
+          RewriteRule ^remont_startera/$  /pages/services/repair_starter.html [L]
+          RewriteRule ^remont_dvigatela/$  /pages/services/repair_engine.html [L]
+          RewriteRule ^diagnostika/$  /pages/services/diagnostika.html [L]
+          RewriteRule ^avtoelectric/$  /pages/services/repair_electricity.html [L]
+          RewriteRule ^viezdnoy_remont/$  /pages/services/viezdnoy_remont.html [L]
+          RewriteRule ^STO/$  /pages/services/STO.html [L]
+</IfModule>
 # ######################################################################
 # # INTERNET EXPLORER                                                  #
 # ######################################################################
