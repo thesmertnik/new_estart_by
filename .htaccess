@@ -98,35 +98,7 @@ ErrorDocument 404 /404.shtml
 # ----------------------------------------------------------------------
 # | Error prevention                                                   |
 # ----------------------------------------------------------------------
-Options +FollowSymLinks
-RewriteEngine On
-#
-RewriteEngine On
-RewriteCond %{HTTP_HOST} ^www.estart.by$ [NC]
-RewriteRule ^(.*)$ http://estart.by/$1 [R=301,L]
-#
-RewriteEngine On
-RewriteCond %{HTTP_HOST} ^estart.by
-RewriteRule (.*) http://www.estart.by/$1 [R=301,L]
-#
-RewriteEngine On
-RewriteCond %{SERVER_PORT} ^443$ [OR]
-RewriteCond %{HTTPS} =on
-RewriteRule ^(.*)$ http://estart.by/$1 [R=301,L]
-#
-RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteCond %{HTTP:X-Forwarded-Proto} !https
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-#
-RewriteEngine On
-RewriteCond %{ENV:HTTPS} !on
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-#
-RewriteEngine On
-RewriteCond %{HTTPS} =off
-RewriteCond %{REQUEST_URI} =/index.html
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [QSA,L]
+
 # Disable the pattern matching based on filenames.
 #
 # This setting prevents Apache from returning a 404 error as the result of a
@@ -416,7 +388,7 @@ AddDefaultCharset utf-8
     RewriteRule ^ - [E=PROTO:http]
 
     # (2)
-    # RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTPS} !=on
 
     RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
     RewriteRule ^ %{ENV:PROTO}://%1%{REQUEST_URI} [R=301,L]
