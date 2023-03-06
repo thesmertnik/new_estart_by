@@ -101,26 +101,22 @@ ErrorDocument 404 /404.shtml
 Options +FollowSymLinks
 RewriteEngine On
 #
-RewriteCond %{HTTP_HOST} ^estart\.by$ [NC]
-RewriteRule ^(.*)$ http://www.estart.by/$1 [R=301,L]
-#
-RewriteCond %{HTTP_HOST} ^www.estart\.by$ [NC]
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www.estart.by$ [NC]
 RewriteRule ^(.*)$ http://estart.by/$1 [R=301,L]
 #
-RewriteCond %{SERVER_PORT} ^80$ [OR]
-RewriteCond %{HTTP} =on
-RewriteRule ^(.*)$ https://estart.by/$1 [R=301,L]
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^estart.by
+RewriteRule (.*) http://www.estart.by/$1 [R=301,L]
 #
-RewriteRule ^dir /dir-new/$1 [R=301,L]
+RewriteEngine On
+RewriteCond %{SERVER_PORT} ^443$ [OR]
+RewriteCond %{HTTPS} =on
+RewriteRule ^(.*)$ http://estart.by/$1 [R=301,L]
 #
-RewriteCond %{SERVER_PORT} ^80$ [OR]
-RewriteCond %{HTTP} =on
-RewriteRule ^(.*)$ https://domain.ru/$1 [R=301,L]
-#
-RewriteCond %{HTTP_REFERER} ref-spam-site.ru [NC,OR]
-RewriteCond %{HTTP_REFERER} another-ref-spam.ru [NC]
-RewriteRule .* - [F]
-#
+RewriteEngine On
+RewriteCond %{SERVER_PORT} !^443$
+RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
 # Disable the pattern matching based on filenames.
 #
 # This setting prevents Apache from returning a 404 error as the result of a
@@ -443,23 +439,25 @@ AddDefaultCharset utf-8
 # Be aware that the following might not be a good idea if you use "real"
 # subdomains for certain parts of your website.
 
-<IfModule mod_rewrite.c>
-     RewriteEngine On
-     # (1)
-     RewriteCond %{HTTPS} =on
-     RewriteRule ^ - [E=PROTO:https]
-     RewriteCond %{HTTPS} !=on
-     RewriteRule ^ - [E=PROTO:http]
+# <IfModule mod_rewrite.c>
 
-     # (2)
-     # RewriteCond %{HTTPS} !=on
+#     RewriteEngine On
 
-     RewriteCond %{HTTP_HOST} !^www\. [NC]
-     RewriteCond %{SERVER_ADDR} !=127.0.0.1
-     RewriteCond %{SERVER_ADDR} !=::1
-     RewriteRule ^ %{ENV:PROTO}://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#     # (1)
+#     RewriteCond %{HTTPS} =on
+#     RewriteRule ^ - [E=PROTO:https]
+#     RewriteCond %{HTTPS} !=on
+#     RewriteRule ^ - [E=PROTO:http]
 
- </IfModule>
+#     # (2)
+#     # RewriteCond %{HTTPS} !=on
+
+#     RewriteCond %{HTTP_HOST} !^www\. [NC]
+#     RewriteCond %{SERVER_ADDR} !=127.0.0.1
+#     RewriteCond %{SERVER_ADDR} !=::1
+#     RewriteRule ^ %{ENV:PROTO}://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# </IfModule>
 
 # ######################################################################
 # # SECURITY                                                           #
@@ -499,9 +497,9 @@ AddDefaultCharset utf-8
 # https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/
 # https://www.owasp.org/index.php/Clickjacking
 
- <IfModule mod_headers.c>
-     Header always set X-Frame-Options "DENY" "expr=%{CONTENT_TYPE} =~ m#text/html#i"
- </IfModule>
+# <IfModule mod_headers.c>
+#     Header always set X-Frame-Options "DENY" "expr=%{CONTENT_TYPE} =~ m#text/html#i"
+# </IfModule>
 
 # ----------------------------------------------------------------------
 # | Content Security Policy (CSP)                                      |
@@ -678,11 +676,11 @@ AddDefaultCharset utf-8
 # https://blogs.msdn.microsoft.com/ieinternals/2014/08/18/strict-transport-security/
 # https://hstspreload.org/
 
-<IfModule mod_headers.c>
-     Header always set Strict-Transport-Security "max-age=16070400; includeSubDomains" "expr=%{HTTPS} == 'on'"
-     # (1) Enable your site for HSTS preload inclusion.
-     # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" "expr=%{HTTPS} == 'on'"
-</IfModule>
+# <IfModule mod_headers.c>
+#     Header always set Strict-Transport-Security "max-age=16070400; includeSubDomains" "expr=%{HTTPS} == 'on'"
+#     # (1) Enable your site for HSTS preload inclusion.
+#     # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" "expr=%{HTTPS} == 'on'"
+# </IfModule>
 
 # ----------------------------------------------------------------------
 # | Content Type Options                                               |
