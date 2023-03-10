@@ -1231,4 +1231,26 @@ FileETag None
 #     RewriteCond %{REQUEST_FILENAME} !-f
 #     RewriteRule ^(.+)\.(\w+)\.(bmp|css|cur|gif|ico|jpe?g|m?js|a?png|svgz?|webp|webmanifest)$ $1.$3 [L]
 # </IfModule>
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^estart.by$
+RewriteRule ^(.*)$ http://estart.by/$1 [R=301,L]
 
+Options +FollowSymLinks
+  RewriteEngine On
+
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP
+RewriteRule ^index\.php$ http://estart.by/ [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^estart.pro$ [OR,NC]
+RewriteCond %{HTTP_HOST} ^www.estart.pro$ [NC]
+RewriteCond %{REQUEST_URI} !^/robots.*
+RewriteRule ^(.*)$ http://estart.by/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^www.estart\.by$ [NC]
+RewriteRule ^(.*)$ http://estart.by/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^estart\.by$ [NC]
+RewriteRule ^(.*)$ http://www.estart.by/$1 [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^(.*)-(.*)$
+RewriteRule . %1/%2 [R=301,L]
