@@ -714,7 +714,7 @@ nav ul li:hover{
   text-align: left;
 }
 .company-overview-container .company-overview-container__first-box h3 a{
-  text-decoration: none;
+  text-decoration: underline;
   color: #646262;
 }
 

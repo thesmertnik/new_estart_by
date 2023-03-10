@@ -291,6 +291,9 @@ h3 a{
 .company-overview-container .company-overview-container__first-box h3{
   text-align: left;
 }
+.company-overview-container .company-overview-container__first-box h3 a{
+  text-decoration: underline;
+}
 
 .company-overview-container .company-overview-container__first-box ion-icon{
   float: left;
