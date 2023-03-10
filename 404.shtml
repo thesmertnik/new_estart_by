@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Page Not Found</title>
+  <title>Страница не найдена</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     * {
@@ -63,7 +63,7 @@
 <body>
   <h1>У-у-упс-с-с...Страница не найдена :(</h1>
   <p>Кажется что-то пошло не так :( <br>
-    <a href="index.html">Вернуться на главную</a>
+    <a href="https://estart.by/index.html">Вернуться на главную</a>
   </p>
 </body>
 

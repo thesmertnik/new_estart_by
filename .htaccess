@@ -423,7 +423,6 @@ AddDefaultCharset utf-8
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-
      # (1)
     RewriteCond %{HTTPS} =on
     RewriteRule ^ - [E=PROTO:https]
