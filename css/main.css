@@ -399,8 +399,9 @@ nav ul li:hover{
   max-width: 70px;
 }
 .why-choose-us-container{
+  justify-content: center;
   width: 370px;
-  height: 310px;
+  height: 410px;
 }
 
 @media screen and (max-width: 500px){
