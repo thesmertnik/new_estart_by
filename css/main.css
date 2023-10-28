@@ -400,6 +400,8 @@ nav ul li:hover{
 }
 .why-choose-us-container{
   justify-content: center;
+  align-content: baseline;
+  align-self: baseline;
   width: 370px;
   height: 410px;
 }
@@ -409,6 +411,13 @@ nav ul li:hover{
     width: 250px;
     height: 400px;
     margin: 0 auto;
+  }
+  .why-choose-us h2{
+    font-size: 1.3em;
+  }
+  .why-choose-us p{
+    font-size: 1em;
+    width: 98%;
   }
 }
 @media screen and (max-width: 380px){
@@ -442,14 +451,16 @@ nav ul li:hover{
 .vehicles-serviced{
   margin-top: 50px;
   max-width: 100%;
-  height: 65vh;
+  min-height: 65vh;
+  height: auto;
   box-sizing: border-box;
-  margin-bottom: 5em;
+  margin-bottom: 20em;
 }
 .vehicles-serviced__left{
   width: 50%;
   max-width: 50%;
-  height: 65vh;
+  min-height: 65vh;
+  height: auto;
   background-image: url("../img/index/photo/car_in_sto.webp");
   background-position: center center;
   background-size: cover;
@@ -460,7 +471,8 @@ nav ul li:hover{
 .vehicles-serviced__right{
   width: 50%;
   max-width: 50%;
-  height: 65vh;
+  min-height: 65vh;
+  height: auto;
   float: right;
   background: #ffffff;
   color: #646262;
@@ -472,12 +484,12 @@ nav ul li:hover{
   .vehicles-serviced__left{
     width: 100%;
     max-width: 100%;
-    float: top;
+    float: left;
   }
   .vehicles-serviced__right{
     width: 100%;
     max-width: 100%;
-    float: top;
+    float: left;
     justify-content: center;
   }
   .vehicles-serviced__right{
@@ -485,7 +497,13 @@ nav ul li:hover{
     margin-bottom: 70px;
   }
 }
+@media screen and (max-width: 568px) {
+  .vehicles-serviced__right p{
+    font-size: 1em;
+    width: 100%;
 
+  }
+}
 .vehicles-serviced__right hr{
   max-width: 70px;
   width: auto;

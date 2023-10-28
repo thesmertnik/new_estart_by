@@ -1,10 +1,10 @@
 {
-  "name": " ",
-  "version": "0.0.1",
-  "description": "",
-  "keywords": "",
+  "name": "Estart.by",
+  "version": "0.0.2",
+  "description": "Сайт выездного ремонта авто в Минске",
+  "keywords": "Выездной ремонт авто в Минске, ремонт стартеров и генераторов, автоэлектрик, запуск двигателя",
   "license": "",
-  "author": "",
+  "author": "flokbi - https://flokbi.com",
   "scripts": {
     "build": "parcel build index.html",
     "dev": "parcel index.html --open",

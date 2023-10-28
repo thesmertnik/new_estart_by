@@ -1,8 +1,8 @@
 {
-  "short_name": "",
-  "name": "",
+  "short_name": "Estart",
+  "name": "Estart.by",
   "icons": [{
-    "src": "icon.png",
+    "src": "favicon.png",
     "type": "image/png",
     "sizes": "192x192"
   }],
